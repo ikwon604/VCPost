@@ -1,0 +1,184 @@
+﻿
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="boardId"
+
+6
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="mode"
+
+update_tutor
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdId"
+
+25952
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdRank"
+
+0
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdActive"
+
+1
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPremium"
+
+0
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPremiumStart"
+
+0000-00-00 00:00:00
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPremiumEnd"
+
+0000-00-00 00:00:00
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdMainDisplay"
+
+0
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile1"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile2"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile3"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile4"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile5"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile6"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile7"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile8"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile9"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="old_imageFile10"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdIpAddress"
+
+205.234.17.32
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdTitle"
+
+초등학생 수학과외 
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdName"
+
+placebo
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPassword"
+
+in1234
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdEmail"
+
+summit.ik@yopmail.com
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPhone"
+
+123-456-7899
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdType"
+
+튜터
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdLocation"
+
+1
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdPrice"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdTag"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="part"
+
+7
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdSummary"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdLink"
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo1"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo2"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo3"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo4"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo5"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo6"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo7"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo8"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo9"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="photo10"; filename=""
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryUO57WjZd1CUsNgza
+Content-Disposition: form-data; name="bdDescription"
+
+테스트..12356
+------WebKitFormBoundaryUO57WjZd1CUsNgza--

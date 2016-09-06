@@ -1,0 +1,6 @@
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\bin\Debug\Data.xls
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.exe.config
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.exe
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.pdb
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.exe
+C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.pdb

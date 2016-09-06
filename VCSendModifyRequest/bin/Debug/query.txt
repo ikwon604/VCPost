@@ -1,0 +1,53 @@
+OPEN SYMMETRIC KEY Key_CD_CellLevel DECRYPTION BY CERTIFICATE Cert_Encrypt_CD_CellLevel;
+SELECT 
+	 distinct InstallAPpId, CompanyGUID, CONVERT(NVARCHAR(512), DECRYPTBYKEY(CompanyName)) AS CompanyName 
+  FROM 
+  [S50AUserData].[dbo].[SanMeter] s
+  JOIN
+  -- list of Pro Current Version Customers
+  (SELECT [ID]
+      ,[ClientID]
+      ,[SerialNum]
+      ,[Version]
+      ,[RecLogDate]
+  FROM [S50AUserData].[dbo].[InstallApp]
+  Where substring([SerialNum],3,2)='21'
+  and [Version] >22000) cust
+  ON
+  cust.ID = s.[InstallAppID]
+
+  JOIN
+
+  -- Pro customers with greater than 10 companies on file
+  (SELECT 
+      cust.[ClientID]
+      ,count(distinct([CompanyGUID])) as Count_CompanyGUID
+
+  FROM 
+  [S50AUserData].[dbo].[SanMeter] s
+  JOIN
+  -- list of Pro Current Version Customers
+  (SELECT [ID]
+      ,[ClientID]
+      ,[SerialNum]
+      ,[Version]
+      ,[RecLogDate]
+  FROM [S50AUserData].[dbo].[InstallApp]
+  Where 
+  substring([SerialNum],3,2)='21'
+  and 
+  [Version] >22000) cust
+  ON
+  cust.ID = s.[InstallAppID]
+  Group by
+  cust.[ClientID]
+  Having 
+  count(distinct([CompanyGUID])) >=10) m
+  ON
+  m.[ClientID]=cust.[ClientID]
+
+  Group by
+  InstallAPpId, CompanyGUID, [CompanyName]
+  order by InstallAppID
+
+  CLOSE SYMMETRIC KEY Key_CD_CellLevel;

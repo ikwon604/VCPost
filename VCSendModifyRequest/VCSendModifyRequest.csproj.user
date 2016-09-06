@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>"http://www.vanchosun.com/market/m_tutor/Function_tutor.php" "6" "update_tutor" "25962" "0" "1" "0" "0000-00-00 00:00:00" "0000-00-00 00:00:00" "0" "" "" "1" "" "" "" "" "" "" "" "" "123.123.123.12" "초등학생 수학과외" "placebo" "in1234" "summit.ik%40yopmail.com" "123-456-7899" "튜터" "1" "" "" "7" "" "" "" "" "" "" "" "" "" "" "" "" "Testing 1221321323"</StartArguments>
+  </PropertyGroup>
+</Project>
