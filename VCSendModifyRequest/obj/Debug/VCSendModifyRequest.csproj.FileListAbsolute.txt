@@ -4,3 +4,12 @@ C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSe
 C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.pdb
 C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.exe
 C:\Users\ikwon\Documents\Visual Studio 2013\Projects\IK\VCSendModifyRequest\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.pdb
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.exe.config
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.exe
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.pdb
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\Data.xls
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.exe
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.pdb
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.Model.dll
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.Model.pdb
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.csprojResolveAssemblyReference.cache

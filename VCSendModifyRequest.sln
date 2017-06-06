@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCSendModifyRequest", "VCSendModifyRequest\VCSendModifyRequest.csproj", "{D8C0CC86-F2C4-44E5-B9D7-CED312AD461B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCSendModifyRequest.Model", "VCSendModifyRequest.Model\VCSendModifyRequest.Model.csproj", "{D81EADDB-235D-4413-96F5-75DB773FC564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D8C0CC86-F2C4-44E5-B9D7-CED312AD461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8C0CC86-F2C4-44E5-B9D7-CED312AD461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8C0CC86-F2C4-44E5-B9D7-CED312AD461B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81EADDB-235D-4413-96F5-75DB773FC564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81EADDB-235D-4413-96F5-75DB773FC564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81EADDB-235D-4413-96F5-75DB773FC564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81EADDB-235D-4413-96F5-75DB773FC564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

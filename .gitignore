@@ -3,3 +3,6 @@
 ################################################################################
 
 /VCSendModifyRequest.Model/bin/Release
+/VCSendModifyRequest.Model/obj/Release
+/.vs/VCSendModifyRequest/v14
+/VCSendModifyRequest/obj/Release/build.force
