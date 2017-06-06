@@ -131,7 +131,7 @@ namespace VCSendModifyRequest.Model
                model.bdPassword = targetList.Where(x => x.Attributes["name"].Value == "bdPassword").First().Attributes["value"].Value;
                model.bdPhone = targetList.Where(x => x.Attributes["name"].Value == "bdPhone").First().Attributes["value"].Value;
                model.bdEmail = targetList.Where(x => x.Attributes["name"].Value == "bdEmail").First().Attributes["value"].Value;
-               model.bdType = targetNode.Descendants("select").Where(x => x.Attributes["name"].Value == "bdType").First().Descendants("option").Where(x => x.Attributes["value"].Value == "튜터").First().Attributes["value"].Value;
+               model.bdType = targetNode.Descendants("select").Where(x => x.Attributes["name"].Value == "bdType").First().Descendants("option").First().Attributes["value"].Value;
                model.bdLocation = targetNode.Descendants("select").Where(x => x.Attributes["name"].Value == "bdLocation").First().SelectNodes("option[@selected]").First().Attributes["value"].Value;
                model.bdPrice = targetList.Where(x => x.Attributes["name"].Value == "bdPrice").First().Attributes["value"].Value;
                model.bdTag = targetList.Where(x => x.Attributes["name"].Value == "bdTag").First().Attributes["value"].Value;
