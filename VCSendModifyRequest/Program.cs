@@ -15,14 +15,11 @@ namespace VCSendModifyRequest
    {
       static void Main()
       {
-         //Check if the file exists
-         RequestModel model = new RequestModel();
-         model.ReadTargetPostRequest();
-         //Read File here
          Console.WriteLine("Reading inputs..");
          try
          {
-
+            RequestUtil util = new RequestUtil();
+            util.UpdatePosts();            
          }
          catch
          {

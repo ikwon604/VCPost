@@ -11,12 +11,17 @@ using HtmlAgilityPack;
 
 namespace VCSendModifyRequest.Model
 {
-   public class PostRequestModel
+   public class BoardIDModel
    {
       public string boardId { get; set; } = String.Empty;
+      public string bdId { get; set; } = String.Empty;
+      public string bdPassword { get; set; } = String.Empty;
+   }
+
+   public class PostRequestModel : BoardIDModel
+   {
       public string tmpPremium { get; set; } = String.Empty;
       public string mode { get; set; } = String.Empty;
-      public string bdId { get; set; } = String.Empty;
       public string bdRank { get; set; } = String.Empty;
       public string bdActive { get; set; } = String.Empty;
       public string bdPremium { get; set; } = String.Empty;
@@ -36,7 +41,6 @@ namespace VCSendModifyRequest.Model
       public string bdIpAddress { get; set; } = String.Empty;
       public string bdTitle { get; set; } = String.Empty;
       public string bdName { get; set; } = String.Empty;
-      public string bdPassword { get; set; } = String.Empty;
       public string bdEmail { get; set; } = String.Empty;
       public string bdPhone { get; set; } = String.Empty;
       public string bdType { get; set; } = String.Empty;
@@ -57,12 +61,24 @@ namespace VCSendModifyRequest.Model
       public string bdDescription { get; set; } = String.Empty;
    }
 
-   public class RequestModel
+   public class RequestUtil
    {
       const string targetUrl = @"http://www.vanchosun.com/market/main/frame.php";
       const string updateUrl = @"http://www.vanchosun.com/market/m_tutor/Function_tutor.php";
+      const string filename = @"Data.xls";
 
-      private PostRequestModel ReadTargetPostRequest()
+      public void UpdatePosts()
+      {
+         List<BoardIDModel> list = new List<BoardIDModel>();
+         list = ReadDataFile(filename);
+         foreach (BoardIDModel model in list)
+         {
+            PostRequestModel postModel = ReadTargetPostRequest(model.boardId, model.bdId, model.bdPassword);
+            SendPostRequest(postModel);
+         }
+      }
+
+      private PostRequestModel ReadTargetPostRequest(string boardId, string bdId, string bdPassword)
       {
          HttpWebRequest request = (HttpWebRequest)WebRequest.Create(targetUrl);
          request.Method = "POST";
@@ -76,7 +92,7 @@ namespace VCSendModifyRequest.Model
             var htmlDoc = new HtmlDocument();
             using (StreamWriter requestWriter = new StreamWriter(request.GetRequestStream()))
             {
-               requestWriter.Write(@"main=tutor&sub=tutor%28write%29&boardId=6&bdId=28628&cpage1=1&bdPassword=vanart123414");
+               requestWriter.Write(@"main=tutor&sub=tutor%28write%29&boardId={0}&bdId={1}&cpage1=1&bdPassword={2}", boardId, bdId, bdPassword);
             }
             HttpWebResponse res = (HttpWebResponse)request.GetResponse();
             using (StreamReader reader = new StreamReader(res.GetResponseStream()))
@@ -142,16 +158,7 @@ namespace VCSendModifyRequest.Model
       /// <summary>
       /// Update post like following
       /// </summary>
-      private string SendPostRequest(
-      string boardId, string tmpPremium,string mode, string bdId, string bdRank, string bdActive,
-      string bdPremium, string bdPremiumStart, string bdPremiumEnd, string bdMainDisplay,
-      string old_imageFile1, string old_imageFile2, string old_imageFile3, string old_imageFile4, string old_imageFile5,
-      string old_imageFile6, string old_imageFile7, string old_imageFile8, string old_imageFile9, string old_imageFile10,
-      string bdIpAddress, string bdTitle, string bdName, string bdPassword, string bdEmail,
-      string bdPhone, string bdType, string bdLocation, string bdPrice, string bdTag,
-      string chk_image, string photo1,
-      string photo2, string photo3, string photo4, string photo5, string photo6,
-      string photo7, string photo8, string photo9, string photo10, string bdDescription)
+      private string SendPostRequest(PostRequestModel model)
       {
          var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
          var requestFormat = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
@@ -178,89 +185,89 @@ namespace VCSendModifyRequest.Model
          try
          {
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "boardId", boardId);
+            requestWriter.Write(requestFormat, "boardId", model.boardId);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "tmpPremium", tmpPremium);
+            requestWriter.Write(requestFormat, "tmpPremium", model.tmpPremium);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "mode", mode);
+            requestWriter.Write(requestFormat, "mode", model.mode);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdId", bdId);
+            requestWriter.Write(requestFormat, "bdId", model.bdId);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdRank", bdRank);
+            requestWriter.Write(requestFormat, "bdRank", model.bdRank);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdActive", bdActive);
+            requestWriter.Write(requestFormat, "bdActive", model.bdActive);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPremium", bdPremium);
+            requestWriter.Write(requestFormat, "bdPremium", model.bdPremium);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPremiumStart", bdPremiumStart);
+            requestWriter.Write(requestFormat, "bdPremiumStart", model.bdPremiumStart);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPremiumEnd", bdPremiumEnd);
+            requestWriter.Write(requestFormat, "bdPremiumEnd", model.bdPremiumEnd);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdMainDisplay", bdMainDisplay);
+            requestWriter.Write(requestFormat, "bdMainDisplay", model.bdMainDisplay);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile1", old_imageFile1);
+            requestWriter.Write(requestFormat, "old_imageFile1", model.old_imageFile1);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile2", old_imageFile2);
+            requestWriter.Write(requestFormat, "old_imageFile2", model.old_imageFile2);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile3", old_imageFile3);
+            requestWriter.Write(requestFormat, "old_imageFile3", model.old_imageFile3);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile4", old_imageFile4);
+            requestWriter.Write(requestFormat, "old_imageFile4", model.old_imageFile4);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile5", old_imageFile5);
+            requestWriter.Write(requestFormat, "old_imageFile5", model.old_imageFile5);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile6", old_imageFile6);
+            requestWriter.Write(requestFormat, "old_imageFile6", model.old_imageFile6);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile7", old_imageFile7);
+            requestWriter.Write(requestFormat, "old_imageFile7", model.old_imageFile7);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile8", old_imageFile8);
+            requestWriter.Write(requestFormat, "old_imageFile8", model.old_imageFile8);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile9", old_imageFile9);
+            requestWriter.Write(requestFormat, "old_imageFile9", model.old_imageFile9);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "old_imageFile10", old_imageFile10);
+            requestWriter.Write(requestFormat, "old_imageFile10", model.old_imageFile10);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdIpAddress", bdIpAddress);
+            requestWriter.Write(requestFormat, "bdIpAddress", model.bdIpAddress);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdTitle", bdTitle);
+            requestWriter.Write(requestFormat, "bdTitle", model.bdTitle);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdName", bdName);
+            requestWriter.Write(requestFormat, "bdName", model.bdName);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPassword", bdPassword);
+            requestWriter.Write(requestFormat, "bdPassword", model.bdPassword);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdEmail", bdEmail);
+            requestWriter.Write(requestFormat, "bdEmail", model.bdEmail);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPhone", bdPhone);
+            requestWriter.Write(requestFormat, "bdPhone", model.bdPhone);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdType", bdType);
+            requestWriter.Write(requestFormat, "bdType", model.bdType);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdLocation", bdLocation);
+            requestWriter.Write(requestFormat, "bdLocation", model.bdLocation);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdPrice", bdPrice);
+            requestWriter.Write(requestFormat, "bdPrice", model.bdPrice);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdTag", bdTag);
+            requestWriter.Write(requestFormat, "bdTag", model.bdTag);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "chk_image", chk_image);
+            requestWriter.Write(requestFormat, "chk_image", model.chk_image);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo1", photo1, "");
+            requestWriter.Write(requestFormatWithFile, "photo1", model.photo1, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo2", photo2, "");
+            requestWriter.Write(requestFormatWithFile, "photo2", model.photo2, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo3", photo3, "");
+            requestWriter.Write(requestFormatWithFile, "photo3", model.photo3, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo4", photo4, "");
+            requestWriter.Write(requestFormatWithFile, "photo4", model.photo4, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo5", photo5, "");
+            requestWriter.Write(requestFormatWithFile, "photo5", model.photo5, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo6", photo6, "");
+            requestWriter.Write(requestFormatWithFile, "photo6", model.photo6, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo7", photo7, "");
+            requestWriter.Write(requestFormatWithFile, "photo7", model.photo7, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo8", photo8, "");
+            requestWriter.Write(requestFormatWithFile, "photo8", model.photo8, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo9", photo9, "");
+            requestWriter.Write(requestFormatWithFile, "photo9", model.photo9, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormatWithFile, "photo10", photo10, "");
+            requestWriter.Write(requestFormatWithFile, "photo10", model.photo10, "");
             requestWriter.Write("\r\n--" + boundary + "\r\n");
-            requestWriter.Write(requestFormat, "bdDescription", bdDescription);
+            requestWriter.Write(requestFormat, "bdDescription", model.bdDescription);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
          }
          catch
@@ -289,14 +296,14 @@ namespace VCSendModifyRequest.Model
          }
       }
 
-      private List<PostRequestModel> ReadDataFile(string fileName)
+      private List<BoardIDModel> ReadDataFile(string fileName)
       {
          Excel.Application xlApp;
          Excel.Workbook xlWorkBook;
          Excel.Worksheet xlWorkSheet;
          Excel.Range range;
 
-         List<PostRequestModel> reqList = new List<PostRequestModel>();
+         List<BoardIDModel> reqList = new List<BoardIDModel>();
 
          try
          {
@@ -314,93 +321,17 @@ namespace VCSendModifyRequest.Model
 
             for (int j = 2; j <= colNo; j++)
             {
-               PostRequestModel model = new PostRequestModel();
+               BoardIDModel model = new BoardIDModel();
                for (int i = 1; i <= rowNo; i++)
                {
                   if (array[i, j] != null)
                   {
                      if (array[i, 1].ToString() == "boardId")
                         model.boardId = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "mode")
-                        model.mode = array[i, j].ToString();
                      if (array[i, 1].ToString() == "bdId")
                         model.bdId = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdRank")
-                        model.bdRank = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdActive")
-                        model.bdActive = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremium")
-                        model.bdPremium = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremiumStart")
-                        model.bdPremiumStart = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremiumEnd")
-                        model.bdPremiumEnd = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdMainDisplay")
-                        model.bdMainDisplay = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile1")
-                        model.old_imageFile1 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile2")
-                        model.old_imageFile2 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile3")
-                        model.old_imageFile3 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile4")
-                        model.old_imageFile4 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile5")
-                        model.old_imageFile5 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile6")
-                        model.old_imageFile6 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile7")
-                        model.old_imageFile7 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile8")
-                        model.old_imageFile8 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile9")
-                        model.old_imageFile9 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile10")
-                        model.old_imageFile10 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdIpAddress")
-                        model.bdIpAddress = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdTitle")
-                        model.bdTitle = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdName")
-                        model.bdName = array[i, j].ToString();
                      if (array[i, 1].ToString() == "bdPassword")
                         model.bdPassword = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdEmail")
-                        model.bdEmail = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPhone")
-                        model.bdPhone = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdType")
-                        model.bdType = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdLocation")
-                        model.bdLocation = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPrice")
-                        model.bdPrice = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdTag")
-                        model.bdTag = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "chk_image")
-                        model.chk_image = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo1")
-                        model.photo1 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo2")
-                        model.photo2 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo3")
-                        model.photo3 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo4")
-                        model.photo4 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo5")
-                        model.photo5 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo6")
-                        model.photo6 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo7")
-                        model.photo7 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo8")
-                        model.photo8 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo9")
-                        model.photo9 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo10")
-                        model.photo10 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdDescription")
-                        model.bdDescription = array[i, j].ToString();
                   }
                }
                reqList.Add(model);
