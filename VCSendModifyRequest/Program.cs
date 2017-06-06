@@ -17,7 +17,7 @@ namespace VCSendModifyRequest
       {
          //Check if the file exists
          RequestModel model = new RequestModel();
-         string s = model.ReadTargetPostRequest();
+         model.ReadTargetPostRequest();
          //Read File here
          Console.WriteLine("Reading inputs..");
          try

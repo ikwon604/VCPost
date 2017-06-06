@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using HtmlAgilityPack;
 
 
 namespace VCSendModifyRequest.Model
@@ -13,6 +14,7 @@ namespace VCSendModifyRequest.Model
    public class PostRequestModel
    {
       public string boardId { get; set; } = String.Empty;
+      public string tmpPremium { get; set; } = String.Empty;
       public string mode { get; set; } = String.Empty;
       public string bdId { get; set; } = String.Empty;
       public string bdRank { get; set; } = String.Empty;
@@ -41,9 +43,6 @@ namespace VCSendModifyRequest.Model
       public string bdLocation { get; set; } = String.Empty;
       public string bdPrice { get; set; } = String.Empty;
       public string bdTag { get; set; } = String.Empty;
-      public string part { get; set; } = String.Empty;
-      public string bdSummary { get; set; } = String.Empty;
-      public string bdLink { get; set; } = String.Empty;
       public string chk_image { get; set; } = String.Empty;
       public string photo1 { get; set; } = String.Empty;
       public string photo2 { get; set; } = String.Empty;
@@ -63,172 +62,7 @@ namespace VCSendModifyRequest.Model
       const string targetUrl = @"http://www.vanchosun.com/market/main/frame.php";
       const string updateUrl = @"http://www.vanchosun.com/market/m_tutor/Function_tutor.php";
 
-      private void CheckDataFile(string fileName)
-      {
-         if (!System.IO.File.Exists(fileName))
-         {
-            Console.WriteLine("There is no " + fileName + " in the directory.");
-            return;
-         }
-      }
-
-      private List<PostRequestModel> ReadDataFile(string fileName)
-      {
-         Excel.Application xlApp;
-         Excel.Workbook xlWorkBook;
-         Excel.Worksheet xlWorkSheet;
-         Excel.Range range;
-
-         List<PostRequestModel> reqList = new List<PostRequestModel>();
-
-         try
-         {
-
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + fileName, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlWorkSheet = xlWorkBook.Worksheets["Data1"];
-
-            range = xlWorkSheet.UsedRange;
-
-            int colNo = xlWorkSheet.UsedRange.Columns.Count;
-            int rowNo = xlWorkSheet.UsedRange.Rows.Count;
-
-            object[,] array = xlWorkSheet.UsedRange.Value;
-
-            for (int j = 2; j <= colNo; j++)
-            {
-               PostRequestModel model = new PostRequestModel();
-               for (int i = 1; i <= rowNo; i++)
-               {
-                  if (array[i, j] != null)
-                  {
-                     if (array[i, 1].ToString() == "boardId")
-                        model.boardId = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "mode")
-                        model.mode = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdId")
-                        model.bdId = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdRank")
-                        model.bdRank = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdActive")
-                        model.bdActive = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremium")
-                        model.bdPremium = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremiumStart")
-                        model.bdPremiumStart = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPremiumEnd")
-                        model.bdPremiumEnd = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdMainDisplay")
-                        model.bdMainDisplay = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile1")
-                        model.old_imageFile1 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile2")
-                        model.old_imageFile2 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile3")
-                        model.old_imageFile3 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile4")
-                        model.old_imageFile4 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile5")
-                        model.old_imageFile5 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile6")
-                        model.old_imageFile6 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile7")
-                        model.old_imageFile7 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile8")
-                        model.old_imageFile8 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile9")
-                        model.old_imageFile9 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "old_imageFile10")
-                        model.old_imageFile10 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdIpAddress")
-                        model.bdIpAddress = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdTitle")
-                        model.bdTitle = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdName")
-                        model.bdName = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPassword")
-                        model.bdPassword = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdEmail")
-                        model.bdEmail = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPhone")
-                        model.bdPhone = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdType")
-                        model.bdType = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdLocation")
-                        model.bdLocation = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdPrice")
-                        model.bdPrice = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdTag")
-                        model.bdTag = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "part")
-                        model.part = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdSummary")
-                        model.bdSummary = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdLink")
-                        model.bdLink = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "chk_image")
-                        model.chk_image = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo1")
-                        model.photo1 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo2")
-                        model.photo2 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo3")
-                        model.photo3 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo4")
-                        model.photo4 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo5")
-                        model.photo5 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo6")
-                        model.photo6 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo7")
-                        model.photo7 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo8")
-                        model.photo8 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo9")
-                        model.photo9 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "photo10")
-                        model.photo10 = array[i, j].ToString();
-                     if (array[i, 1].ToString() == "bdDescription")
-                        model.bdDescription = array[i, j].ToString();
-                  }
-               }
-               reqList.Add(model);
-            }
-
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
-         }
-         catch
-         {
-
-         }
-
-         return reqList;
-      }
-
-      private void releaseObject(object obj)
-      {
-         try
-         {
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-            obj = null;
-         }
-         catch (Exception ex)
-         {
-            obj = null;
-            Console.WriteLine("Unable to release the Object " + ex.ToString());
-         }
-         finally
-         {
-            GC.Collect();
-         }
-      }
-
-      public string ReadTargetPostRequest()
+      private PostRequestModel ReadTargetPostRequest()
       {
          HttpWebRequest request = (HttpWebRequest)WebRequest.Create(targetUrl);
          request.Method = "POST";
@@ -237,34 +71,78 @@ namespace VCSendModifyRequest.Model
          request.ContentType = @"application/x-www-form-urlencoded";
          request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
          request.Referer = "http://www.vanchosun.com/market/main/frame.php?main=tutor&bdId=28628&cpage1=1&search_type=&search_title=&search_location=";
-
-         StreamWriter requestWriter = new StreamWriter(request.GetRequestStream());
          try
          {
-            requestWriter.Write(@"main=tutor&sub=tutor%28write%29&boardId=6&bdId=28628&cpage1=1&bdPassword=vanart123414");
-            
-         }
-         catch
-         {
-            throw;
-         }
-         finally
-         {
-            requestWriter.Close();
-            requestWriter = null;
-         }
+            var htmlDoc = new HtmlDocument();
+            using (StreamWriter requestWriter = new StreamWriter(request.GetRequestStream()))
+            {
+               requestWriter.Write(@"main=tutor&sub=tutor%28write%29&boardId=6&bdId=28628&cpage1=1&bdPassword=vanart123414");
+            }
+            HttpWebResponse res = (HttpWebResponse)request.GetResponse();
+            using (StreamReader reader = new StreamReader(res.GetResponseStream()))
+            {
+               htmlDoc.LoadHtml(reader.ReadToEnd());
+               var htmlNodes = htmlDoc.DocumentNode.SelectNodes("//div");
+               PostRequestModel model = new PostRequestModel();
 
-         HttpWebResponse res = (HttpWebResponse)request.GetResponse();
-         using (StreamReader reader = new StreamReader(res.GetResponseStream()))
-         {
-            return reader.ReadToEnd();
+               HtmlNode targetNode = htmlNodes.Where(x => x.Id == "cf_middle").First();
+               List<HtmlNode> targetList = targetNode.Descendants("input").ToList();
+
+               model.boardId = targetList.Where(x => x.Attributes["name"].Value == "boardId").First().Attributes["value"].Value;
+               model.tmpPremium = targetList.Where(x => x.Attributes["name"].Value == "tmpPremium").First().Attributes["value"].Value;
+               //hard code this
+               model.mode = "update_tutor";
+               model.bdId = targetList.Where(x => x.Attributes["name"].Value == "bdId").First().Attributes["value"].Value;
+               model.bdRank = targetList.Where(x => x.Attributes["name"].Value == "bdRank").First().Attributes["value"].Value;
+               model.bdActive = targetList.Where(x => x.Attributes["name"].Value == "bdActive").First().Attributes["value"].Value;
+               model.bdPremium = targetList.Where(x => x.Attributes["name"].Value == "bdPremium").First().Attributes["value"].Value;
+               model.bdPremiumStart = targetList.Where(x => x.Attributes["name"].Value == "bdPremiumStart").First().Attributes["value"].Value;
+               model.bdPremiumEnd = targetList.Where(x => x.Attributes["name"].Value == "bdPremiumEnd").First().Attributes["value"].Value;
+               model.bdMainDisplay = targetList.Where(x => x.Attributes["name"].Value == "bdMainDisplay").First().Attributes["value"].Value;
+               model.old_imageFile1 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile1").First().Attributes["value"].Value;
+               model.old_imageFile2 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile2").First().Attributes["value"].Value;
+               model.old_imageFile3 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile3").First().Attributes["value"].Value;
+               model.old_imageFile4 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile4").First().Attributes["value"].Value;
+               model.old_imageFile5 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile5").First().Attributes["value"].Value;
+               model.old_imageFile6 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile6").First().Attributes["value"].Value;
+               model.old_imageFile7 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile7").First().Attributes["value"].Value;
+               model.old_imageFile8 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile8").First().Attributes["value"].Value;
+               model.old_imageFile9 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile9").First().Attributes["value"].Value;
+               model.old_imageFile10 = targetList.Where(x => x.Attributes["name"].Value == "old_imageFile10").First().Attributes["value"].Value;
+               model.bdIpAddress = targetList.Where(x => x.Attributes["name"].Value == "bdIpAddress").First().Attributes["value"].Value;
+               model.bdTitle = targetList.Where(x => x.Attributes["name"].Value == "bdTitle").First().Attributes["value"].Value;
+               model.bdName = targetList.Where(x => x.Attributes["name"].Value == "bdName").First().Attributes["value"].Value;
+               model.bdPassword = targetList.Where(x => x.Attributes["name"].Value == "bdPassword").First().Attributes["value"].Value;
+               model.bdPhone = targetList.Where(x => x.Attributes["name"].Value == "bdPhone").First().Attributes["value"].Value;
+               model.bdEmail = targetList.Where(x => x.Attributes["name"].Value == "bdEmail").First().Attributes["value"].Value;
+               model.bdType = targetNode.Descendants("select").Where(x => x.Attributes["name"].Value == "bdType").First().Descendants("option").Where(x => x.Attributes["value"].Value == "튜터").First().Attributes["value"].Value;
+               model.bdLocation = targetNode.Descendants("select").Where(x => x.Attributes["name"].Value == "bdLocation").First().SelectNodes("option[@selected]").First().Attributes["value"].Value;
+               model.bdPrice = targetList.Where(x => x.Attributes["name"].Value == "bdPrice").First().Attributes["value"].Value;
+               model.bdTag = targetList.Where(x => x.Attributes["name"].Value == "bdTag").First().Attributes["value"].Value;
+               model.chk_image = targetList.Where(x => x.Attributes["name"].Value == "chk_image").First().Attributes["value"].Value;
+               model.photo1 = targetList.Where(x => x.Attributes["name"].Value == "photo1").First().Attributes["value"].Value;
+               model.photo2 = targetList.Where(x => x.Attributes["name"].Value == "photo2").First().Attributes["value"].Value;
+               model.photo3 = targetList.Where(x => x.Attributes["name"].Value == "photo3").First().Attributes["value"].Value;
+               model.photo4 = targetList.Where(x => x.Attributes["name"].Value == "photo4").First().Attributes["value"].Value;
+               model.photo5 = targetList.Where(x => x.Attributes["name"].Value == "photo5").First().Attributes["value"].Value;
+               model.photo6 = targetList.Where(x => x.Attributes["name"].Value == "photo6").First().Attributes["value"].Value;
+               model.photo7 = targetList.Where(x => x.Attributes["name"].Value == "photo7").First().Attributes["value"].Value;
+               model.photo8 = targetList.Where(x => x.Attributes["name"].Value == "photo8").First().Attributes["value"].Value;
+               model.photo9 = targetList.Where(x => x.Attributes["name"].Value == "photo9").First().Attributes["value"].Value;
+               model.photo10 = targetList.Where(x => x.Attributes["name"].Value == "photo10").First().Attributes["value"].Value;
+               model.bdDescription = targetNode.Descendants("textarea").Where(x => x.Attributes["name"].Value == "bdDescription").First().InnerHtml;
+
+               return model;
+            }
+         }catch(Exception){
+            return null;
          }
       }
 
       /// <summary>
       /// Update post like following
       /// </summary>
-      private string SendPostRequest(string url,
+      private string SendPostRequest(
       string boardId, string tmpPremium,string mode, string bdId, string bdRank, string bdActive,
       string bdPremium, string bdPremiumStart, string bdPremiumEnd, string bdMainDisplay,
       string old_imageFile1, string old_imageFile2, string old_imageFile3, string old_imageFile4, string old_imageFile5,
@@ -288,7 +166,7 @@ namespace VCSendModifyRequest.Model
 
 
          //byte[] bytes = Encoding.UTF8.GetBytes(querystring);
-         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(updateUrl);
          request.ContentType = "multipart/form-data; boundary=" + boundary;
          request.Method = "POST";
          request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
@@ -402,6 +280,163 @@ namespace VCSendModifyRequest.Model
          }
       }
 
+      private void CheckDataFile(string fileName)
+      {
+         if (!System.IO.File.Exists(fileName))
+         {
+            Console.WriteLine("There is no " + fileName + " in the directory.");
+            return;
+         }
+      }
 
+      private List<PostRequestModel> ReadDataFile(string fileName)
+      {
+         Excel.Application xlApp;
+         Excel.Workbook xlWorkBook;
+         Excel.Worksheet xlWorkSheet;
+         Excel.Range range;
+
+         List<PostRequestModel> reqList = new List<PostRequestModel>();
+
+         try
+         {
+
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + fileName, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlWorkSheet = xlWorkBook.Worksheets["Data1"];
+
+            range = xlWorkSheet.UsedRange;
+
+            int colNo = xlWorkSheet.UsedRange.Columns.Count;
+            int rowNo = xlWorkSheet.UsedRange.Rows.Count;
+
+            object[,] array = xlWorkSheet.UsedRange.Value;
+
+            for (int j = 2; j <= colNo; j++)
+            {
+               PostRequestModel model = new PostRequestModel();
+               for (int i = 1; i <= rowNo; i++)
+               {
+                  if (array[i, j] != null)
+                  {
+                     if (array[i, 1].ToString() == "boardId")
+                        model.boardId = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "mode")
+                        model.mode = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdId")
+                        model.bdId = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdRank")
+                        model.bdRank = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdActive")
+                        model.bdActive = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPremium")
+                        model.bdPremium = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPremiumStart")
+                        model.bdPremiumStart = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPremiumEnd")
+                        model.bdPremiumEnd = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdMainDisplay")
+                        model.bdMainDisplay = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile1")
+                        model.old_imageFile1 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile2")
+                        model.old_imageFile2 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile3")
+                        model.old_imageFile3 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile4")
+                        model.old_imageFile4 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile5")
+                        model.old_imageFile5 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile6")
+                        model.old_imageFile6 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile7")
+                        model.old_imageFile7 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile8")
+                        model.old_imageFile8 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile9")
+                        model.old_imageFile9 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "old_imageFile10")
+                        model.old_imageFile10 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdIpAddress")
+                        model.bdIpAddress = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdTitle")
+                        model.bdTitle = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdName")
+                        model.bdName = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPassword")
+                        model.bdPassword = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdEmail")
+                        model.bdEmail = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPhone")
+                        model.bdPhone = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdType")
+                        model.bdType = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdLocation")
+                        model.bdLocation = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdPrice")
+                        model.bdPrice = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdTag")
+                        model.bdTag = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "chk_image")
+                        model.chk_image = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo1")
+                        model.photo1 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo2")
+                        model.photo2 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo3")
+                        model.photo3 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo4")
+                        model.photo4 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo5")
+                        model.photo5 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo6")
+                        model.photo6 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo7")
+                        model.photo7 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo8")
+                        model.photo8 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo9")
+                        model.photo9 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "photo10")
+                        model.photo10 = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "bdDescription")
+                        model.bdDescription = array[i, j].ToString();
+                  }
+               }
+               reqList.Add(model);
+            }
+
+            xlWorkBook.Close(true, null, null);
+            xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+         }
+         catch
+         {
+
+         }
+
+         return reqList;
+      }
+
+      private void releaseObject(object obj)
+      {
+         try
+         {
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+            obj = null;
+         }
+         catch (Exception ex)
+         {
+            obj = null;
+            Console.WriteLine("Unable to release the Object " + ex.ToString());
+         }
+         finally
+         {
+            GC.Collect();
+         }
+      }
    }
 }

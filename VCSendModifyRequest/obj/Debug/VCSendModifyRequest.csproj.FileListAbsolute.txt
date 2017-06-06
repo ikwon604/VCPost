@@ -13,3 +13,6 @@ C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModif
 C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.Model.dll
 C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\VCSendModifyRequest.Model.pdb
 C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\obj\Debug\VCSendModifyRequest.csprojResolveAssemblyReference.cache
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\HtmlAgilityPack.dll
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\ikwon\Documents\GitHub\VCPost\VCSendModifyRequest\bin\Debug\HtmlAgilityPack.xml
