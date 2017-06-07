@@ -70,11 +70,15 @@ namespace VCSendModifyRequest.Model
       public void UpdatePosts()
       {
          List<BoardIDModel> list = new List<BoardIDModel>();
+         TraceLog.Instance.WriteLine(string.Format("Start reading a data file: {0}", filename));
          list = ReadDataFile(filename);
          foreach (BoardIDModel model in list)
          {
+            TraceLog.Instance.WriteLine(string.Format("Getting info from the target post {0}", model.bdId));
             PostRequestModel postModel = ReadTargetPostRequest(model.boardId, model.bdId, model.bdPassword);
+            TraceLog.Instance.WriteLine(string.Format("Updating the target post {0}", model.bdId));
             SendPostRequest(postModel);
+            TraceLog.Instance.WriteLine(string.Format("Done updating the target post {0}", model.bdId));
          }
       }
 
@@ -150,7 +154,8 @@ namespace VCSendModifyRequest.Model
 
                return model;
             }
-         }catch(Exception){
+         }catch(Exception e){
+            TraceLog.Instance.WriteLine(string.Format("Error: {0}", e.Message));
             return null;
          }
       }
@@ -270,9 +275,8 @@ namespace VCSendModifyRequest.Model
             requestWriter.Write(requestFormat, "bdDescription", model.bdDescription);
             requestWriter.Write("\r\n--" + boundary + "\r\n");
          }
-         catch
-         {
-            throw;
+         catch (Exception e){
+            TraceLog.Instance.WriteLine(string.Format("Error: {0}", e.Message));
          }
          finally
          {
@@ -344,9 +348,8 @@ namespace VCSendModifyRequest.Model
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
          }
-         catch
-         {
-
+         catch (Exception e){
+            TraceLog.Instance.WriteLine(string.Format("Error: {0}", e.Message));
          }
 
          return reqList;
@@ -359,10 +362,9 @@ namespace VCSendModifyRequest.Model
             System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
             obj = null;
          }
-         catch (Exception ex)
-         {
+         catch (Exception e){
             obj = null;
-            Console.WriteLine("Unable to release the Object " + ex.ToString());
+            TraceLog.Instance.WriteLine(string.Format("Error: {0}", e.Message));
          }
          finally
          {

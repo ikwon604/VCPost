@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net;
-using System.Collections.Specialized;
-using System.IO;
 using VCSendModifyRequest.Model;
 
 namespace VCSendModifyRequest
@@ -15,17 +7,16 @@ namespace VCSendModifyRequest
    {
       static void Main()
       {
-         Console.WriteLine("Reading inputs..");
          try
          {
+            TraceLog.Instance.WriteLine("Starting the program...");
             RequestUtil util = new RequestUtil();
             util.UpdatePosts();            
          }
-         catch
-         {
-            Console.WriteLine("Invalid input..");
+         catch (Exception e){
+            TraceLog.Instance.WriteLine(string.Format("Error: {0}", e.Message));
          }
-         Console.WriteLine("Exiting..");
+         TraceLog.Instance.WriteLine("Exiting...");
       }
 
       
