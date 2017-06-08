@@ -16,6 +16,7 @@ namespace VCSendModifyRequest.Model
       public string boardId { get; set; } = String.Empty;
       public string bdId { get; set; } = String.Empty;
       public string bdPassword { get; set; } = String.Empty;
+      public string postDay { get; set; } = String.Empty;
    }
 
    public class PostRequestModel : BoardIDModel
@@ -72,13 +73,17 @@ namespace VCSendModifyRequest.Model
          List<BoardIDModel> list = new List<BoardIDModel>();
          TraceLog.Instance.WriteLine(string.Format("Start reading a data file: {0}", filename));
          list = ReadDataFile(filename);
+         DayOfWeek today = DateTime.Today.DayOfWeek;
          foreach (BoardIDModel model in list)
          {
-            TraceLog.Instance.WriteLine(string.Format("Getting info from the target post {0}", model.bdId));
-            PostRequestModel postModel = ReadTargetPostRequest(model.boardId, model.bdId, model.bdPassword);
-            TraceLog.Instance.WriteLine(string.Format("Updating the target post {0}", model.bdId));
-            SendPostRequest(postModel);
-            TraceLog.Instance.WriteLine(string.Format("Done updating the target post {0}", model.bdId));
+            if (model.postDay.IndexOf(today.ToString(), StringComparison.OrdinalIgnoreCase) > -1)
+            {
+               TraceLog.Instance.WriteLine(string.Format("Getting info from the target post {0}", model.bdId));
+               PostRequestModel postModel = ReadTargetPostRequest(model.boardId, model.bdId, model.bdPassword);
+               TraceLog.Instance.WriteLine(string.Format("Updating the target post {0}", model.bdId));
+               SendPostRequest(postModel);
+               TraceLog.Instance.WriteLine(string.Format("Done updating the target post {0}", model.bdId));
+            }
          }
       }
 
@@ -336,6 +341,8 @@ namespace VCSendModifyRequest.Model
                         model.bdId = array[i, j].ToString();
                      if (array[i, 1].ToString() == "bdPassword")
                         model.bdPassword = array[i, j].ToString();
+                     if (array[i, 1].ToString() == "Postday")
+                        model.postDay = array[i, j].ToString();
                   }
                }
                reqList.Add(model);

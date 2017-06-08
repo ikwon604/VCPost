@@ -1,15 +1,99 @@
-VCRequest_RunTime: [6/7/2017 4:54:24 PM] Starting the program...
-VCRequest_RunTime: [6/7/2017 4:54:24 PM] Start reading a data file: Data.xls
-VCRequest_RunTime: [6/7/2017 4:54:42 PM] Getting info from the target post 28648
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Updating the target post 28648
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Done updating the target post 28648
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Getting info from the target post 28774
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Updating the target post 28774
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Done updating the target post 28774
-VCRequest_RunTime: [6/7/2017 4:54:43 PM] Getting info from the target post 28650
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Updating the target post 28650
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Done updating the target post 28650
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Getting info from the target post 28773
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Updating the target post 28773
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Done updating the target post 28773
-VCRequest_RunTime: [6/7/2017 4:54:44 PM] Exiting...
+VCRequest_RunTime: [6/7/2017 5:16:36 PM] Starting the program...
+VCRequest_RunTime: [6/7/2017 5:16:36 PM] Start reading a data file: Data.xls
+VCRequest_RunTime: [6/7/2017 5:16:41 PM] Getting info from the target post 28648
+VCRequest_RunTime: [6/7/2017 5:16:41 PM] Updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:16:41 PM] Done updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:16:41 PM] Getting info from the target post 28774
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Done updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Getting info from the target post 28650
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Done updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Getting info from the target post 28773
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Done updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:16:42 PM] Getting info from the target post 286249
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Error: Sequence contains no elements
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Updating the target post 286249
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Error: Object reference not set to an instance of an object.
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Done updating the target post 286249
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Getting info from the target post 32833
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Done updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Getting info from the target post 32834
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Done updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Getting info from the target post 30059
+VCRequest_RunTime: [6/7/2017 5:16:43 PM] Updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:16:44 PM] Done updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:16:44 PM] Exiting...
+VCRequest_RunTime: [6/7/2017 5:17:07 PM] Starting the program...
+VCRequest_RunTime: [6/7/2017 5:17:07 PM] Start reading a data file: Data.xls
+VCRequest_RunTime: [6/7/2017 5:17:23 PM] Getting info from the target post 28648
+VCRequest_RunTime: [6/7/2017 5:17:23 PM] Updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:17:23 PM] Done updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:17:25 PM] Getting info from the target post 28774
+VCRequest_RunTime: [6/7/2017 5:17:25 PM] Updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:17:25 PM] Done updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:17:26 PM] Getting info from the target post 28650
+VCRequest_RunTime: [6/7/2017 5:17:26 PM] Updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:17:27 PM] Done updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:17:27 PM] Getting info from the target post 28773
+VCRequest_RunTime: [6/7/2017 5:17:28 PM] Updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:17:28 PM] Done updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:22 PM] Starting the program...
+VCRequest_RunTime: [6/7/2017 5:18:22 PM] Start reading a data file: Data.xls
+VCRequest_RunTime: [6/7/2017 5:18:30 PM] Getting info from the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Done updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Getting info from the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Done updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:31 PM] Getting info from the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Done updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Getting info from the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Done updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Getting info from the target post 286249
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Error: Sequence contains no elements
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Updating the target post 286249
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Error: Object reference not set to an instance of an object.
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Done updating the target post 286249
+VCRequest_RunTime: [6/7/2017 5:18:32 PM] Getting info from the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Done updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Getting info from the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Done updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Getting info from the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Done updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:33 PM] Exiting...
+VCRequest_RunTime: [6/7/2017 5:18:49 PM] Starting the program...
+VCRequest_RunTime: [6/7/2017 5:18:49 PM] Start reading a data file: Data.xls
+VCRequest_RunTime: [6/7/2017 5:18:53 PM] Getting info from the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Done updating the target post 28648
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Getting info from the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Done updating the target post 28774
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Getting info from the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:54 PM] Updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Done updating the target post 28650
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Getting info from the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Done updating the target post 28773
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Getting info from the target post 28649
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Updating the target post 28649
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Done updating the target post 28649
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Getting info from the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:55 PM] Updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Done updating the target post 32833
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Getting info from the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Done updating the target post 32834
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Getting info from the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Done updating the target post 30059
+VCRequest_RunTime: [6/7/2017 5:18:56 PM] Exiting...
